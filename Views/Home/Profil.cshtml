@@ -1,0 +1,44 @@
+﻿@model CosmeticShop.Models.ProfilModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section id="contact-us" class="contact-us section">
+    <div class="container">
+        <div class="contact-head">
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <div class="single-head">
+                        <img src="~/images/Profile.jpeg" />
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12">
+                    <div class="row">
+                        <div class=" col-12">
+                            <div class="title">
+                                <h1>Profile Info</h1>
+                            </div>
+                            <div class="form-group">
+                                <ul>
+                                    <li><h3 class="title">Name: @Model.UserName</h3></li>
+                                    <li><h3 class="title">Surname: @Model.UserSurname</h3></li>
+                                    <li><h3 class="title">E-mail: @Model.UserMail</h3></li>
+                                </ul>
+                            </div>
+                            <div class="col-12">
+                                @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-group button">
+                                        <input name ="Email" value="@Model.UserMail" type="hidden"/>
+                                        <button type="submit" class="btn ">Logout</button>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

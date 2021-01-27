@@ -1,0 +1,78 @@
+﻿@model CosmeticShop.Models.UserLogin
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body class="js">
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bread-inner">
+                        <ul class="bread-list">
+                            <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+                            <li class="active"><a href="blog-single.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="contact-us" class="contact-us section">
+        <div class="container">
+            <div class="contact-head">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="form-main">
+                            <div class="title">
+                                <h3>Login</h3>
+                            </div>
+                            @if (Model.Errorcode > 0)
+                            {
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2>@Model.ErrorMessage</h2>
+                                    </div>
+                                </div>
+                            }
+                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="row">
+                                    <div class=" col-12">
+                                        <div class="form-group">
+                                            <label>E-mail<span>*</span></label>
+                                            <input name="UserEmail" type="text" value="@Model.UserEmail" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class=" col-12">
+                                        <div class="form-group">
+                                            <label>Password<span>*</span></label>
+                                            <input name="Password" type="text" value="@Model.Password" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group button">
+                                            <button type="submit" class="btn ">Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="single-head">
+                            <div class="single-info">
+                                <i class="fa fa-bell-o"></i>
+                                <h4 class="title">Are you still not part of our family?</h4>
+                                <ul>
+                                    <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active":"")">@Html.ActionLink("Register", "Register", "Home")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Contact -->
+</body>

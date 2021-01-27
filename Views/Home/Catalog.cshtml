@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CosmeticShop.Models.CatalogModel>
+@using CosmeticShop.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="/">Home<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="/Home/Catalog">Catalog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="product-area shop-sidebar shop section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl col-lg-4 col-md-4 col-12">
+                <div class="row">
+                    @foreach (var Product in Model)
+                    {
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                            <div class="single-product">
+                                <div class="product-img">
+                                    <a href="/Home/Product/?ProductID=@Product.Id">
+                                        <img class="default-img" src="@Product.ProductPhooto" alt="#">
+                                    </a>
+                                    <div class="button-head">
+                                        <div class="product-action">
+                                            <a title="Wishlist" onclick="WishlistAdd(@Product.Id,@Season.GetUserID())" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h3><a href="/Home/Product/?ProductID=@Product.Id">@Product.ProductName</a></h3>
+                                    <div class="product-price">
+                                        <span>@Product.ProductPrice TL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Javalar{
+    <script type="text/javascript">
+        function WishlistAdd(productid, userid) {
+            $.get("/api/AddToWishlist/WishAdd?ProductID=" + productid +"&UserID=" +userid, function (data, error) {
+                if (data.Redirect)
+                {
+                    alert(data.Response)
+                    $(location).attr('href', '/Home/Login')
+                }
+               alert(data.Response)
+            });
+        }
+       
+    </script>
+}

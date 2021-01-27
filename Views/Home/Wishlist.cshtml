@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CosmeticShop.Models.WishlistDisplayModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body class="js">
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bread-inner">
+                        <ul class="bread-list">
+                            <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+                            <li class="active"><a href="blog-single.html">Wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="product-area shop-sidebar shop section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl col-lg-4 col-md-4 col-12">
+                    <div class="row">
+                        @if (Model.Count() > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                    <div class="single-product">
+                                        <div class="product-img">
+                                            <a href="/Home/Product/?ProductID=@item.ProductID">
+                                                <img class="default-img" src="@item.ProductPhoto" alt="#">
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <h3><a href="/Home/Product/?ProductID=@item.ProductID">@item.ProductName</a></h3>
+                                            <div class="product-price">
+                                                <span>@item.ProductPrice TL</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+@section Javalar{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (@ViewBag.Error == 0) {
+                console.log("kullanıcı kayıtlı");
+            }
+            else {
+                console.log("değil");
+                alert("Üye girişi yapınız!")
+                $(location).attr('href', '/Home/Login')
+            }
+        });
+    </script>
+}
+
+

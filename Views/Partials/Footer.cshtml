@@ -1,0 +1,50 @@
+﻿<footer class="footer">
+    <div class="footer-top section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-12">
+                    <div class="single-footer about">
+                        <div class="logo">
+                            <a href="#"><img src="/images/shiningstars.png" alt="#"></a>
+                        </div>
+                        <p class="text">All rights reserved!</p>
+                        <p class="call"><span><a href="tel:123456789">+0232 535 35 35</a></span></p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <div class="single-footer links">
+                        <h4>Information</h4>
+                        <ul>
+                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Catalog" ? "active":"")">@Html.ActionLink("Catalog", "Catalog", "Home")</li>
+                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "About" ? "active":"")">@Html.ActionLink("About Us", "About", "Home")</li>
+                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Contact" ? "active":"")">@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="single-footer social">
+                        <h4>Get In Touch</h4>
+                        <div class="contact">
+                            <ul>
+                                <li>Kuruçeşme Mh. Deü Kaynaklar Yerleşkesi</li>
+                                <li> Buca/izmir </li>
+                                <li>info@deu.com</li>
+                                <li>+0232 535 35 35</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <div class="single-footer links">
+                        <h4>By</h4>
+                        <ul>
+                            <li><a href="#">Damla Ülkü <br /> 2017510091</a></li>
+                            <li><a href="#">Deniz Albayrak 2017510007</a></li>
+                            <li><a href="#">Mehmedcan Özman 2017510107</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
